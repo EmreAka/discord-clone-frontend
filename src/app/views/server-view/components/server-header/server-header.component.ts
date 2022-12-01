@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./server-header.component.scss']
 })
 export class ServerHeaderComponent {
-
+  serverTitle: string = "Emre'nin yeri"
 }
