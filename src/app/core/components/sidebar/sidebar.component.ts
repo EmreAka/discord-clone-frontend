@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   servers: string[] = ["server","server","server","server","server","server","server","server","server","server","server",]
-  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  
 }
