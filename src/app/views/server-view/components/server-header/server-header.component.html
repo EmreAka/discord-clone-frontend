@@ -1,5 +1,21 @@
-<div class="flex items-center justify-between p-4 border-b border-gray-900 shadow-md hover:cursor-pointer hover:bg-gray-600">
+<div
+    class="flex items-center justify-between p-4 border-b border-gray-900 shadow-md hover:cursor-pointer hover:bg-gray-600">
     <h1 class="text-white font-bold text-center text-xl">{{serverTitle}}</h1>
     <!-- <i class="bi bi-arrow-down-circle-fill text-white"></i> -->
     <i class="bi bi-caret-down-fill text-white text-lg"></i>
+</div>
+
+<div class="mt-3 flex flex-col gap-3">
+    <div class="flex flex-col px-3 text-gray-300" *ngFor="let group of groups">
+        <div  class="flex items-center hover:text-gray-100  hover:cursor-pointer">
+            <i class="bi bi-caret-down-fill text-xs"></i>
+            <h4 class="px-3">{{group.title}}</h4>
+        </div>
+        <div *ngFor="let chat of group.channels" class="flex items-center pl-3 hover:text-gray-100 hover:bg-gray-600 hover:cursor-pointer">
+            <!-- <span class="font-bold text-2xl mr-3">#</span> -->
+            <h1 class="py-1">
+                {{chat}}
+            </h1>
+        </div>
+    </div>
 </div>
