@@ -6,20 +6,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './server-header.component.html',
   styleUrls: ['./server-header.component.scss']
 })
-export class ServerHeaderComponent implements OnInit{
+export class ServerHeaderComponent{
   serverTitle: string = "Emre'nin yeri"
   test: string[] = ["test1", "test2"]
   groups: Group[] = [{id: 1, title:"TEXT CHANNELS", channels: ["chat", "share", "cat-pics"]},{id: 2, title:"PROGRAMMING", channels: ["typescript", "csharp", "dart"]}]
   headerClicked: boolean = false;
   
-  constructor(private activatedRoute: ActivatedRoute) {  }
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe({
-      next: (params) => {
-        console.log(params["id"])
-      }
-    });
-  }
 }
 
 interface Group{
