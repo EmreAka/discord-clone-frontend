@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  {
+    path:"", redirectTo: "", pathMatch: "full"
+  },
   {
     path: "channels/:id",
     loadChildren: () => import("./views/server-view/server-view.module").then(module => module.ServerViewModule)
