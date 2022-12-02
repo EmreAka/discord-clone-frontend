@@ -1,0 +1,17 @@
+<div class="text-gray-200 font-bold h-11 bg-gray-700 border-t border-gray-600 flex items-center px-2 justify-between hover:cursor-pointer">
+    <diV class="flex items-center">
+        <img src="/assets/pfp.png" class="h-8 w-8 rounded-full"/>
+        <h4 class="ml-3">Cranberry</h4>
+    </diV>
+    
+    <div class="flex text-lg">
+        <div>
+            <i *ngIf="!isMicrophoneMuted" (click)="isMicrophoneMuted = !isMicrophoneMuted" class="bi bi-mic-fill hover:bg-gray-600 px-2 rounded-sm"></i>
+            <i *ngIf="isMicrophoneMuted" (click)="isMicrophoneMuted = !isMicrophoneMuted" class="bi bi-mic-mute-fill hover:bg-gray-600 px-2 rounded-sm"></i>
+        </div>
+        <div>
+            <i (click)="isHeadphoneMuted = !isHeadphoneMuted" class="bi bi-headphones hover:bg-gray-600 px-2 rounded-sm"></i>
+            <!-- <i *ngIf="isHeadphoneMuted" (click)="isHeadphoneMuted = !isHeadphoneMuted" class="bi bi-headphones-mute hover:bg-gray-600 px-2 rounded-sm"></i> -->
+        </div>
+    </div>
+</div>
