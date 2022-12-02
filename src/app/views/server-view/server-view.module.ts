@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ServerHeaderComponent } from './components/server-header/server-header.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
+import { ChannelsComponent } from './components/channels/channels.component';
 
 const routes: Routes = [
   {path:"", component: ServerViewComponent}
@@ -15,6 +16,7 @@ const routes: Routes = [
     ServerViewComponent,
     ServerHeaderComponent,
     ChatHeaderComponent,
+    ChannelsComponent,
   ],
   imports: [
     CommonModule,
