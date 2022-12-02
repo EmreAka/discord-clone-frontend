@@ -7,12 +7,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./server-view.component.scss']
 })
 export class ServerViewComponent implements OnInit{
-  chatId: string = ""
+  channelId: string = ""
+  serverId: string = ""
+
   constructor(private activatedRoute: ActivatedRoute) {  }
+  
   ngOnInit(): void {
     this.activatedRoute.params.subscribe({
       next: (params) => {
-        this.chatId = params["id"];
+        this.serverId = params["serverId"];
+        this.channelId = params["channelId"];
       }
     });
   }

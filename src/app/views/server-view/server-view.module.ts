@@ -8,7 +8,7 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChannelsComponent } from './components/channels/channels.component';
 
 const routes: Routes = [
-  {path:"", component: ServerViewComponent}
+  {path:":serverId/:channelId", component: ServerViewComponent}
 ]
 
 @NgModule({
