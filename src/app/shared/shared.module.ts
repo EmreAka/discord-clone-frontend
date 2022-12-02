@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserInfoBarComponent } from './components/user-info-bar/user-info-bar.component';
+import { TextBoxComponent } from './components/text-box/text-box.component';
 
 
 
 @NgModule({
   declarations: [
-    UserInfoBarComponent
+    UserInfoBarComponent,
+    TextBoxComponent
   ],
   imports: [
     CommonModule
   ],
   exports:[
-    UserInfoBarComponent
+    UserInfoBarComponent,
+    TextBoxComponent
   ]
 })
 export class SharedModule { }
