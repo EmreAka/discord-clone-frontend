@@ -7,6 +7,10 @@ const routes: Routes = [
     path:"", redirectTo: "", pathMatch: "full"
   },
   {
+    path: "login",
+    loadChildren: () => import("./views/login-view/login-view.module").then(module => module.LoginViewModule)
+  },
+  {
     path: "channels",
     loadChildren: () => import("./views/server-view/server-view.module").then(module => module.ServerViewModule)
   }

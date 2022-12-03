@@ -1,0 +1,14 @@
+<div class="flex justify-center items-center h-full">
+    <div class="bg-gray-700 p-5 rounded-md flex flex-col gap-2">
+        <h1 class="font-bold text-gray-300 self-center">Welcome</h1>
+        <form class="flex flex-col gap-2" [formGroup]="credentials">
+            <input formControlName="email" placeholder="Email" type="email" class="p-2 rounded-xl w-72 bg-gray-800 text-gray-300" />
+            <input formControlName="password" placeholder="Password" type="password" class="p-2 rounded-xl bg-gray-800 text-gray-300" />
+        </form>
+        <button (click)="login()" class="text-gray-300 bg-gray-800 px-6 hover:bg-gray-900 shadow-md py-2 rounded-xl">LOGIN</button>
+        <div class="flex justify-between">
+            <p class="text-gray-300 hover:cursor-pointer hover:underline">Reset password</p>
+            <p class="text-gray-300 hover:cursor-pointer hover:underline">Create an account</p>
+        </div>
+    </div>
+</div>
