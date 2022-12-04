@@ -37,7 +37,7 @@ export class LoginViewComponent implements OnInit {
         next: (value) => {
           localStorage.setItem("token", value.jwt)
           this.authService.decodeToken(value.jwt)
-          this.router.navigateByUrl("channels/10/10")
+          this.router.navigateByUrl("channels/1")
         }
       });
     else{

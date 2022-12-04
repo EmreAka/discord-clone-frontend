@@ -9,7 +9,7 @@ import { ChannelsComponent } from './components/channels/channels.component';
 import { CoreModule } from 'src/app/core/core.module';
 
 const routes: Routes = [
-  {path:":serverId/:channelId", component: ServerViewComponent}
+  {path:":serverId", component: ServerViewComponent}
 ]
 
 @NgModule({
