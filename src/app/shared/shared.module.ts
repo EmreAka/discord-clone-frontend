@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserInfoBarComponent } from './components/user-info-bar/user-info-bar.component';
 import { TextBoxComponent } from './components/text-box/text-box.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -16,6 +18,9 @@ import { TextBoxComponent } from './components/text-box/text-box.component';
   exports:[
     UserInfoBarComponent,
     TextBoxComponent
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ]
 })
 export class SharedModule { }

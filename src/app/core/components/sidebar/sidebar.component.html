@@ -4,7 +4,8 @@
     </div>
 
     <div *ngFor="let server of servers">
-        <img  src="/assets/server-image.png" class="w-14 rounded-full hover:rounded-2xl hover:cursor-pointer"/>
+        <!-- <img  src="/assets/server-image.png" class="w-14 rounded-full hover:rounded-2xl hover:cursor-pointer"/> -->
+        <img  [src]="server.imagePath" class="w-14 rounded-full hover:rounded-2xl hover:cursor-pointer"/>
     </div>
 
 
