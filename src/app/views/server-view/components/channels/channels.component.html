@@ -1,13 +1,13 @@
 <div class="mt-3 flex flex-col gap-3">
-    <div class="flex flex-col text-gray-300" *ngFor="let group of groups">
+    <div class="flex flex-col text-gray-300" *ngFor="let category of categories">
         <div  class="flex items-center hover:text-gray-100  hover:cursor-pointer">
             <i class="bi bi-dot text-2xl"></i>
-            <h4 class="text-sm font-bold">{{group.title}}</h4>
+            <h4 class="text-sm font-bold">{{category.name}}</h4>
         </div>
-        <div *ngFor="let chat of group.channels" class="flex items-center pl-3 hover:text-gray-100 hover:bg-gray-600 hover:cursor-pointer">
+        <!-- <div *ngFor="let chat of category.channels" class="flex items-center pl-3 hover:text-gray-100 hover:bg-gray-600 hover:cursor-pointer">
             <h1 class="py-1">
                 {{chat}}
             </h1>
-        </div>
+        </div> -->
     </div>
 </div>

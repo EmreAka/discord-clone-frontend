@@ -18,9 +18,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
   exports:[
     UserInfoBarComponent,
     TextBoxComponent
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ]
 })
 export class SharedModule { }

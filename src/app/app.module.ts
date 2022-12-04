@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import { ServerViewModule } from './views/server-view/server-view.module';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt'
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
+import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt'
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true },
     JwtHelperService
   ],
   bootstrap: [AppComponent]
