@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import { ServerViewModule } from './views/server-view/server-view.module';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,10 @@ import { ServerViewModule } from './views/server-view/server-view.module';
     CoreModule,
     ServerViewModule
   ],
-  providers: [],
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
