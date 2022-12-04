@@ -6,6 +6,7 @@ import { ServerHeaderComponent } from './components/server-header/server-header.
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { ChannelsComponent } from './components/channels/channels.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 const routes: Routes = [
   {path:":serverId/:channelId", component: ServerViewComponent}
@@ -21,6 +22,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
+    CoreModule,
     RouterModule.forChild(routes)
   ]
 })

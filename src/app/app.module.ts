@@ -20,7 +20,6 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt'
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    CoreModule,
     ServerViewModule
   ],
   providers: [
