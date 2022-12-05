@@ -19,9 +19,6 @@ export class LoginViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.credentials.valueChanges.subscribe({
-      next: (value) => console.log(value)
-    })
   } 
 
   createForm(){

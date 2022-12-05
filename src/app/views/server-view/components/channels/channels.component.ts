@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CategoryService } from 'src/app/shared/services/category.service';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-channels',
@@ -8,12 +9,12 @@ import { CategoryService } from 'src/app/shared/services/category.service';
   styleUrls: ['./channels.component.scss']
 })
 export class ChannelsComponent implements OnInit{
-  test: string[] = ["test1", "test2"]
-  // groups: Group[] = [{id: 1, title:"TEXT CHANNELS", channels: ["chat", "share", "cat-pics"]},{id: 2, title:"PROGRAMMING", channels: ["typescript", "csharp", "dart"]}]
   categories: any[] = []
 
-  constructor(private categoryService: CategoryService,
-    private activatedRoute: ActivatedRoute
+  constructor(
+    private categoryService: CategoryService,
+    private activatedRoute: ActivatedRoute,
+    private chatService: ChatService
     ) {}
 
   ngOnInit(): void {
@@ -30,5 +31,9 @@ export class ChannelsComponent implements OnInit{
         this.categories = data;
       }
     })
+  }
+
+  setChannelId(channelId: number){
+    this.chatService.setChannelId(channelId)
   }
 }
