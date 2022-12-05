@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ChatService } from '../../services/chat.service';
+import { Channel, ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,7 +10,7 @@ import { ChatService } from '../../services/chat.service';
 export class ChatComponent implements OnInit, OnDestroy{
 
   subscription$: Subscription
-  channelId: number | null;
+  channel: Channel | null;
   loading: boolean = true;
 
   messages: any[] = []
@@ -38,9 +38,9 @@ export class ChatComponent implements OnInit, OnDestroy{
   getChannelId(){
     this.subscription$ = this.chatService.getChannelId().subscribe({
       next: (value) => {
-        this.channelId = value;
+        this.channel = value;
         if (value != null) {
-          this.getMessagesByChannelId(value)
+          this.getMessagesByChannelId(value.id)
         }
       }
     })

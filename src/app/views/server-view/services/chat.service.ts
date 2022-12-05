@@ -8,8 +8,8 @@ import { environment } from 'src/environments/environment';
 })
 export class ChatService {
 
-  private channelId = new  BehaviorSubject<number | null>(null)
-  private channelId$ = this.channelId.asObservable()
+  private channel = new  BehaviorSubject<Channel | null>(null)
+  private channel$ = this.channel.asObservable()
 
 
 
@@ -18,15 +18,21 @@ export class ChatService {
     private httpClient: HttpClient
   ) { }
 
-  getChannelId(): Observable<number | null>{
-    return this.channelId$
+  getChannelId(): Observable<Channel | null>{
+    return this.channel$
   }
 
-  setChannelId(channelId: number){
-    this.channelId.next(channelId);
+  setChannelId(channel: Channel){
+    this.channel.next(channel);
   }
 
   getAllMessagesByChannelId(channelId: number){
     return this.httpClient.get<any>(`${this.baseUrl}server-message/${channelId}`)
   }
+}
+
+export interface Channel{
+  id: number
+  name: string
+  description: string
 }
