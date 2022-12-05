@@ -23,7 +23,7 @@ export class ChatComponent implements OnInit, OnDestroy{
     this.subscription$.unsubscribe();
   }
   ngOnInit(): void {
-    this.getChannelId();
+    this.getChannel();
   }
 
   getMessagesByChannelId(channelId: number){
@@ -35,8 +35,8 @@ export class ChatComponent implements OnInit, OnDestroy{
     })
   }
 
-  getChannelId(){
-    this.subscription$ = this.chatService.getChannelId().subscribe({
+  getChannel(){
+    this.subscription$ = this.chatService.getChannel().subscribe({
       next: (value) => {
         this.channel = value;
         if (value != null) {

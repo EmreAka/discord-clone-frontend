@@ -18,11 +18,11 @@ export class ChatService {
     private httpClient: HttpClient
   ) { }
 
-  getChannelId(): Observable<Channel | null>{
+  getChannel(): Observable<Channel | null>{
     return this.channel$
   }
 
-  setChannelId(channel: Channel){
+  setChannel(channel: Channel){
     this.channel.next(channel);
   }
 

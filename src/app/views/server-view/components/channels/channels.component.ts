@@ -38,11 +38,11 @@ export class ChannelsComponent implements OnInit{
   }
 
   setChannel(channel: Channel){
-    this.chatService.setChannelId(channel)
+    this.chatService.setChannel(channel)
   }
 
   getChannelId(){
-    this.chatService.getChannelId().subscribe({
+    this.chatService.getChannel().subscribe({
       next: (value) => {
         if (value != null) {
           this.channel = value
