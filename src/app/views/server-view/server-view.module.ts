@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { ChannelsComponent } from './components/channels/channels.component';
 import { CoreModule } from 'src/app/core/core.module';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {path:":serverId", component: ServerViewComponent}
@@ -18,6 +19,7 @@ const routes: Routes = [
     ServerHeaderComponent,
     ChatHeaderComponent,
     ChannelsComponent,
+    ChatComponent,
   ],
   imports: [
     CommonModule,
