@@ -10,6 +10,7 @@ import { ChatService } from '../../services/chat.service';
 })
 export class ChannelsComponent implements OnInit{
   categories: any[] = []
+  channelId: number;
 
   constructor(
     private categoryService: CategoryService,
@@ -23,6 +24,7 @@ export class ChannelsComponent implements OnInit{
         this.getCategories(route['serverId'])
       }
     })
+    this.getChannelId()
   }
 
   getCategories(serverId: number){
@@ -35,5 +37,22 @@ export class ChannelsComponent implements OnInit{
 
   setChannelId(channelId: number){
     this.chatService.setChannelId(channelId)
+  }
+
+  getChannelId(){
+    this.chatService.getChannelId().subscribe({
+      next: (value) => {
+        if (value != null) {
+          this.channelId = value
+        }
+      }
+    })
+  }
+
+  getClass(channelId: number){
+    if (this.channelId === channelId) {
+      return "bg-gray-600 text-gray-100"
+    }
+    return ""
   }
 }

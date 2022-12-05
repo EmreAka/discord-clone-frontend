@@ -4,9 +4,9 @@
             <i class="bi bi-dot text-2xl"></i>
             <h4 class="text-sm font-bold">{{category.name}}</h4>
         </div>
-        <div *ngFor="let chat of category.channels" (click)="setChannelId(chat.id)" class="flex items-center pl-3 hover:text-gray-100 hover:bg-gray-600 hover:cursor-pointer">
+        <div *ngFor="let channel of category.channels" (click)="setChannelId(channel.id)" [ngClass]="getClass(channel.id)"  class="flex items-center pl-3 hover:text-gray-100 hover:bg-gray-600 hover:cursor-pointer">
             <h1 class="py-1">
-                {{chat.name}}
+                {{channel.name}}
             </h1>
         </div>
     </div>
