@@ -1,7 +1,7 @@
 <div class="text-gray-200 font-bold h-11 bg-gray-700 border-t border-gray-600 flex items-center px-2 justify-between hover:cursor-pointer">
-    <diV class="flex items-center">
-        <img src="/assets/pfp.png" class="h-8 w-8 rounded-full"/>
-        <h4 class="ml-3">{{username}}</h4>
+    <diV class="flex items-center" *ngIf="!loading">
+        <img [src]="user.imagePath" class="h-8 w-8 rounded-full"/>
+        <h4 class="ml-3">{{user.username}}</h4>
     </diV>
     
     <div class="flex text-lg">
