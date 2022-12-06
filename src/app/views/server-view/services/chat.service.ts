@@ -29,10 +29,24 @@ export class ChatService {
   getAllMessagesByChannelId(channelId: number){
     return this.httpClient.get<any>(`${this.baseUrl}server-message/${channelId}`)
   }
+
+  add(message: CreateMessageDto){
+    return this.httpClient.post<CreateMessageDto>(`${this.baseUrl}server-message`, {
+      message: message.message,
+      serverId: message.serverId,
+      channelId: message.channelId
+    })
+  }
 }
 
 export interface Channel{
   id: number
   name: string
   description: string
+}
+
+export interface CreateMessageDto{
+  message: string
+  serverId: number
+  channelId: number
 }

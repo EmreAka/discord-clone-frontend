@@ -4,6 +4,7 @@ import { UserInfoBarComponent } from './components/user-info-bar/user-info-bar.c
 import { TextBoxComponent } from './components/text-box/text-box.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     TextBoxComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     UserInfoBarComponent,

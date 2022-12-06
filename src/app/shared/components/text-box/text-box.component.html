@@ -1,4 +1,4 @@
 <div class="p-2 flex items-center text-gray-200 gap-2">
     <i class="bi bi-plus-circle-fill pl-3 hover:cursor-pointer hover:text-gray-100 text-xl"></i>
-    <input placeholder="Enter message" class="w-full p-1 bg-transparent outline-none text-gray-200"/>
+    <input (keyup.enter)="sendMessage()" [(ngModel)]="message" placeholder="Enter message" class="w-full p-1 bg-transparent outline-none text-gray-200"/>
 </div>
