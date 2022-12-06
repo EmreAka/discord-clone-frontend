@@ -1,11 +1,11 @@
-<div class="flex flex-col  px-5 h-full justify-end">
+<div class="flex flex-col gap-3 h-full">
     <!-- this is gonna be a separate component -->
-    <div class="flex h-fit" *ngFor="let message of messages">
-            <img [src]="message.user.imagePath" class="h-10 w-10 rounded-full" />
+    <div class="flex h-fit hover:bg-gray-700 px-5 py-1" *ngFor="let message of messages">
+            <img [src]="message.user.imagePath" class="h-10 w-10 rounded-full hover:cursor-pointer" />
             <!-- <h4 class="ml-3">{{username}}</h4> -->
             <div class="ml-3">
                 <div class="flex items-center gap-3">
-                    <h1 class="font-medium text-pink-500">{{message.user.username}}</h1>
+                    <h1 class="font-medium text-pink-500 hover:underline hover:cursor-pointer">{{message.user.username}}</h1>
                     <h2 class="text-gray-400 text-sm">{{message.createdAt | date: 'medium': '+3000'}}</h2>
                 </div>
                 <p class="text-white">{{message.message}}</p>
