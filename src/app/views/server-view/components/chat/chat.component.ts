@@ -7,7 +7,7 @@ import { Channel, ChatService } from '../../services/chat.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit, OnDestroy{
+export class ChatComponent implements OnInit, OnDestroy {
 
   subscription$: Subscription
   channel: Channel | null;
@@ -17,7 +17,7 @@ export class ChatComponent implements OnInit, OnDestroy{
 
   constructor(
     private chatService: ChatService
-  ) {}
+  ) { }
 
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();
@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit, OnDestroy{
     this.getChannel();
   }
 
-  getMessagesByChannelId(channelId: number){
+  getMessagesByChannelId(channelId: number) {
     this.chatService.getAllMessagesByChannelId(channelId).subscribe({
       next: (value) => {
         this.messages = value
@@ -35,7 +35,7 @@ export class ChatComponent implements OnInit, OnDestroy{
     })
   }
 
-  getChannel(){
+  getChannel() {
     this.subscription$ = this.chatService.getChannel().subscribe({
       next: (value) => {
         this.channel = value;

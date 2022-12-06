@@ -4,7 +4,10 @@
             <img [src]="message.user.imagePath" class="h-10 w-10 rounded-full" />
             <!-- <h4 class="ml-3">{{username}}</h4> -->
             <div class="ml-3">
-                <h1 class="font-medium text-pink-500">{{message.user.username}}</h1>
+                <div class="flex items-center gap-3">
+                    <h1 class="font-medium text-pink-500">{{message.user.username}}</h1>
+                    <h2 class="text-gray-400 text-sm">{{message.createdAt | date: 'medium': '+3000'}}</h2>
+                </div>
                 <p class="text-white">{{message.message}}</p>
             </div>
     </div>
