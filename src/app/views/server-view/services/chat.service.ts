@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +16,8 @@ export class ChatService {
 
   baseUrl = environment.apiUrl;
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private socket: Socket
   ) { }
 
   getChannel(): Observable<Channel | null>{
@@ -36,6 +38,10 @@ export class ChatService {
       serverId: message.serverId,
       channelId: message.channelId
     })
+  }
+
+  sendMessage(message: CreateMessageDto){
+    this.socket.emit('sendMessage', message)
   }
 }
 

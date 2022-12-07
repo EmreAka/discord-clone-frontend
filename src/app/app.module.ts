@@ -10,6 +10,9 @@ import { ServerViewModule } from './views/server-view/server-view.module';
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt'
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {transports: ['websocket']} };
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.inte
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    ServerViewModule
+    ServerViewModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

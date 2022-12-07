@@ -36,6 +36,7 @@ export class TextBoxComponent implements OnInit, OnDestroy {
 
   sendMessage(){
     //TODO: SERVER ID SHOULD BE TAKEN FROM A SERVICE
+    this.chatService.sendMessage({message: this.message, serverId: 1, channelId: this.channel.id});
     this.chatService.add({message: this.message, serverId: 1, channelId: this.channel.id}).subscribe({
       next: (value) => {
         console.log(value)
