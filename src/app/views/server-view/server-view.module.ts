@@ -8,11 +8,26 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChannelsComponent } from './components/channels/channels.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { ChatComponent } from './components/chat/chat.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 const routes: Routes = [
   {path:":serverId", component: ServerViewComponent}
 ]
 
+let token: string = <string>localStorage.getItem('token')
+const config: SocketIoConfig = {
+  url: 'http://localhost:3000',
+  options: {
+    transports: ['websocket'],
+    extraHeaders: {
+      Authorization: `Bearer ${token}`
+    },
+    query:{
+      bearerToken: token
+    },
+    
+  }
+};
 @NgModule({
   declarations: [
     ServerViewComponent,
@@ -25,7 +40,8 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     CoreModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SocketIoModule.forRoot(config)
   ]
 })
 export class ServerViewModule { }

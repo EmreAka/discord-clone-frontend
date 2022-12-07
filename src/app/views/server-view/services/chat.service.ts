@@ -41,7 +41,7 @@ export class ChatService {
   }
 
   sendMessage(message: CreateMessageDto){
-    // this.socket.ioSocket.io.opts.query = { Authorization: localStorage.getItem('token') };
+    // this.socket.ioSocket.io.opts.query = { bearerToken: localStorage.getItem('token') };
     this.socket.emit('sendMessage', message)
   }
 }

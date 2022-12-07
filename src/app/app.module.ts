@@ -5,19 +5,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {CoreModule} from "./core/core.module";
+import { CoreModule } from "./core/core.module";
 import { ServerViewModule } from './views/server-view/server-view.module';
-import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt'
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt'
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
 let token: string = <string>localStorage.getItem('token')
-const config: SocketIoConfig = { 
+console.log(token)
+const config: SocketIoConfig = {
   url: 'http://localhost:3000',
-   options: {transports: ['websocket'], extraHeaders: {
-  Authorization: `Bearer ${token}`
-}} };
+  options: {
+    transports: ['websocket'],
+    extraHeaders: {
+      Authorization: `Bearer ${token}`
+    },
+    query:{
+      bearerToken: token
+    }
+  }
+};
 
 @NgModule({
   declarations: [
@@ -31,7 +39,7 @@ const config: SocketIoConfig = {
     BrowserAnimationsModule,
     AppRoutingModule,
     ServerViewModule,
-    SocketIoModule.forRoot(config)
+    // SocketIoModule.forRoot(config)
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
