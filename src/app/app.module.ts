@@ -12,7 +12,12 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {transports: ['websocket']} };
+let token: string = <string>localStorage.getItem('token')
+const config: SocketIoConfig = { 
+  url: 'http://localhost:3000',
+   options: {transports: ['websocket'], extraHeaders: {
+  Authorization: `Bearer ${token}`
+}} };
 
 @NgModule({
   declarations: [
