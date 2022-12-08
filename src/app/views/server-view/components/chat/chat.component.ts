@@ -24,6 +24,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.getChannel();
+    this.chatService.lala()
+    this.isMessageRecieved()
   }
 
   getMessagesByChannelId(channelId: number) {
@@ -41,6 +43,17 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.channel = value;
         if (value != null) {
           this.getMessagesByChannelId(value.id)
+        }
+      }
+    })
+  }
+
+  isMessageRecieved(){
+    this.chatService.isMessageRecieved().subscribe({
+      next: (value) => {
+        if (value != null) {
+          console.log(value)
+          this.getMessagesByChannelId(this.channel!.id)
         }
       }
     })

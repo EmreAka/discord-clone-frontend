@@ -12,6 +12,8 @@ export class ChatService {
   private channel = new  BehaviorSubject<Channel | null>(null)
   private channel$ = this.channel.asObservable()
 
+  private messageRecieved = new BehaviorSubject<MessageRecievedNotification |null>(null);
+  private messageRecieved$ = this.messageRecieved.asObservable();
 
 
   baseUrl = environment.apiUrl;
@@ -26,6 +28,10 @@ export class ChatService {
 
   setChannel(channel: Channel){
     this.channel.next(channel);
+  }
+
+  isMessageRecieved(){
+    return this.messageRecieved;
   }
 
   getAllMessagesByChannelId(channelId: number){
@@ -44,6 +50,14 @@ export class ChatService {
     // this.socket.ioSocket.io.opts.query = { bearerToken: localStorage.getItem('token') };
     this.socket.emit('sendMessage', message)
   }
+
+  lala(){
+    this.socket.fromEvent<MessageRecievedNotification>('messageRecieved').subscribe({
+      next:(value) => {
+        this.messageRecieved.next(value)
+      }
+    })
+  }
 }
 
 export interface Channel{
@@ -55,5 +69,10 @@ export interface Channel{
 export interface CreateMessageDto{
   message: string
   serverId: number
+  channelId: number
+}
+
+export interface MessageRecievedNotification{
+  serverId: number,
   channelId: number
 }
