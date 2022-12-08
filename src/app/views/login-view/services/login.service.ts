@@ -13,14 +13,14 @@ export class LoginService {
   baseUrl = environment.apiUrl;
   constructor(
     private httpService: HttpClient,
-     private jwt: JwtHelperService,
-     ) { }
+    private jwt: JwtHelperService,
+  ) { }
 
-  login(credentials: any): Observable<any>{
+  login(credentials: any): Observable<any> {
     return this.httpService.post<any>(`${this.baseUrl}auth/signin`, credentials);
   }
 
-  decodeToken(token: string){
+  decodeToken(token: string) {
     const decodeToken = this.jwt.decodeToken(token);
     localStorage.setItem("username", decodeToken["username"])
   }

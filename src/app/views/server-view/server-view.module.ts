@@ -8,14 +8,15 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChannelsComponent } from './components/channels/channels.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { ChatComponent } from './components/chat/chat.component';
-import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { Socket, SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 const routes: Routes = [
   {path:":serverId", component: ServerViewComponent}
 ]
 
-let token: string = <string>localStorage.getItem('token')
-const config: SocketIoConfig = {
+var token: string = <string>localStorage.getItem('token')
+var config: SocketIoConfig = {
   url: 'http://localhost:3000',
   options: {
     transports: ['websocket'],
@@ -44,4 +45,25 @@ const config: SocketIoConfig = {
     SocketIoModule.forRoot(config)
   ]
 })
-export class ServerViewModule { }
+export class ServerViewModule {
+  /**
+   *
+   */
+  constructor(
+    private authService: AuthService,
+    private socket: Socket
+  ) { 
+    this.authService.isTokenChanged().subscribe({
+      next: (value) => {
+        if (config.options?.query != undefined && (value != null)) {
+          config.options.query['bearerToken'] = value;
+          console.log("yeni token:", value)
+          console.log(config.options.query['bearerToken'])
+          this.socket.connect()
+        }
+      }
+    })
+   }
+
+
+ }

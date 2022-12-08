@@ -38,9 +38,8 @@ export class LoginViewComponent implements OnInit {
       this.loginService.login(this.credentials.value).subscribe({
         next: (value) => {
           localStorage.setItem("token", value.jwt)
-          this.socket.connect()
           this.authService.decodeToken(value.jwt)
-          console.log("alo")
+          this.authService.changeToken(value.jwt)
           this.router.navigateByUrl("channels/1")
         }
       });
@@ -49,4 +48,11 @@ export class LoginViewComponent implements OnInit {
     }
   }
 
+  // isTokenChanged(){
+  //   this.authService.isTokenChanged().subscribe({
+  //     next: (value) => {
+  //       this.socket.connect()
+  //     }
+  //   })
+  // }
 }
