@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,12 +6,20 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './server-view.component.html',
   styleUrls: ['./server-view.component.scss']
 })
-export class ServerViewComponent implements OnInit{
+export class ServerViewComponent implements OnInit, AfterViewChecked{
   channelId: string = ""
   serverId: string = ""
+  
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   constructor(private activatedRoute: ActivatedRoute) {  }
-  
+
+  ngAfterViewChecked(): void {
+    if (this.myScrollContainer) {
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    }
+  }
+
   ngOnInit(): void {
     this.activatedRoute.params.subscribe({
       next: (params) => {
