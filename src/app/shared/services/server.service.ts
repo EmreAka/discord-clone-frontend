@@ -17,4 +17,8 @@ export class ServerService {
   getAll(): Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}server`)
   }
+
+  enroll(serverId: number): Observable<any>{
+    return this.httpClient.post<any>(`${this.baseUrl}server/${serverId}`, {})
+  }
 }

@@ -26,7 +26,7 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
             this.socket.disconnect();
             this.router.navigateByUrl('/login')
           }
-          return throwError(() => new Error("Unauthorized!"));
+          return throwError(() => error);
         })
       )
   }
