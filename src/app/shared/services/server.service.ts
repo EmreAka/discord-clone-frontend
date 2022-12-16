@@ -13,4 +13,8 @@ export class ServerService {
   getAllEnrolled(): Observable<any>{
     return this.httpClient.get<any>(`${this.baseUrl}server/enrolled`)
   }
+
+  getAll(): Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}server`)
+  }
 }
