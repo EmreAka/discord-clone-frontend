@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: "channels",
     loadChildren: () => import("./views/server-view/server-view.module").then(module => module.ServerViewModule)
+  },
+  {
+    path: "discover",
+    loadChildren: () => import("./views/discover-view/discover-view.module").then(module => module.DiscoverViewModule)
   }
 ];
 
