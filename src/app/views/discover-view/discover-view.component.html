@@ -1,7 +1,9 @@
 <div class="flex h-screen">
-    <app-sidebar></app-sidebar>
+    <div class="z-10">
+        <app-sidebar></app-sidebar>
+    </div>
     <div class="bg-gray-600 grow flex flex-col justify-between">
-        <div class="bg-gray-700 flex items-center justify-center pb-2">
+        <div class="bg-gray-700 flex items-center justify-center pb-2 border-b-black shadow-slate-700 shadow-md">
             <h1 class="font-bold text-gray-300 text-5xl">Hello, Let's Discover!</h1>
         </div>
 
@@ -17,7 +19,7 @@
                                 <h2>{{server.description}}</h2>
                             </div>
                             <button
-                                class="bg-green-400 text-white rounded-sm font-bold py-2 self-end justify-self-end w-20 shadow-md hover:bg-green-500"
+                                class="bg-green-500 text-white rounded-sm font-bold py-2 self-end justify-self-end w-20 shadow-md hover:bg-green-400 ease-in-out duration-300"
                                 (click)="join(server.id)">
                                 JOIN
                             </button>
@@ -27,7 +29,7 @@
             </div>
 
             <div class="flex items-center justify-center p-3">
-                <button (click)="getMore()" class="bg-gray-800 text-gray-300 p-3 grow rounded-md text-xl">Get more</button>
+                <button (click)="getMore()" class="bg-gray-800 text-gray-300 p-3 grow rounded-md text-xl hover:bg-green-500 ease-in-out duration-300">Get more</button>
             </div>
 
         </div>
