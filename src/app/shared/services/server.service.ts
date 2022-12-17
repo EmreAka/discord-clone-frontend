@@ -14,11 +14,17 @@ export class ServerService {
     return this.httpClient.get<any>(`${this.baseUrl}server/enrolled`)
   }
 
-  getAll(): Observable<any>{
-    return this.httpClient.get<any>(`${this.baseUrl}server`)
+  getAll(query:Query): Observable<any>{
+    return this.httpClient.get<any>(`${this.baseUrl}server?page=${query.page}&pageSize=${query.pageSize}&keyword=${query.keyword}`)
   }
 
   enroll(serverId: number): Observable<any>{
     return this.httpClient.post<any>(`${this.baseUrl}server/${serverId}`, {})
   }
+}
+
+export interface Query{
+  page: number
+  pageSize: number
+  keyword: string
 }

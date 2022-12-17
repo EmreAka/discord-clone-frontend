@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ServerService } from 'src/app/shared/services/server.service';
+import { ServerService, Query } from 'src/app/shared/services/server.service';
 
 @Component({
   selector: 'app-discover-view',
@@ -9,7 +9,7 @@ import { ServerService } from 'src/app/shared/services/server.service';
 })
 export class DiscoverViewComponent implements OnInit{
   servers: any[] = []
-
+  query: Query = {page:0, pageSize: 10, keyword: ""}
   constructor(
     private serverService: ServerService,
     private router: Router
@@ -20,11 +20,16 @@ export class DiscoverViewComponent implements OnInit{
   }
 
   getServers(){
-    this.serverService.getAll().subscribe({
+    this.serverService.getAll(this.query).subscribe({
       next: (value) => {
-        this.servers = value
+        this.servers = value.data
       }
     })
+  }
+
+  getMore(){
+    this.query.pageSize += 10
+    this.getServers()
   }
 
   join(serverId: number){
