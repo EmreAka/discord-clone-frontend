@@ -5,13 +5,15 @@ import { TextBoxComponent } from './components/text-box/text-box.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateServerModalComponent } from './components/create-server-modal/create-server-modal.component';
 
 
 
 @NgModule({
   declarations: [
     UserInfoBarComponent,
-    TextBoxComponent
+    TextBoxComponent,
+    CreateServerModalComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports:[
     UserInfoBarComponent,
-    TextBoxComponent
+    TextBoxComponent,
+    CreateServerModalComponent
   ]
 })
 export class SharedModule { }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,7 +8,23 @@ import { environment } from 'src/environments/environment';
 })
 export class ServerService {
   baseUrl = environment.apiUrl;
+  
+  private modalOpened = new BehaviorSubject<boolean>(false)
+  private modalOpened$ = this.modalOpened.asObservable()
+
   constructor(private httpClient: HttpClient) { }
+
+  isModalOpened(){
+    return this.modalOpened$
+  }
+
+  openModal(){
+    this.modalOpened.next(true)
+  }
+
+  closeModal(){
+    this.modalOpened.next(false)
+  }
 
   getById(id: number){
     return this.httpClient.get<any>(this.baseUrl + "server"+"?"+"id="+id)

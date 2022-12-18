@@ -31,7 +31,7 @@ export class ChatService {
   }
 
   isMessageRecieved(){
-    return this.messageRecieved;
+    return this.messageRecieved$;
   }
 
   getAllMessagesByChannelId(channelId: number){

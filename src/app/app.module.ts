@@ -11,6 +11,7 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt'
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { SharedModule } from './shared/shared.module';
 
 let token: string = <string>localStorage.getItem('token')
 console.log(token)
@@ -39,6 +40,7 @@ const config: SocketIoConfig = {
     BrowserAnimationsModule,
     AppRoutingModule,
     ServerViewModule,
+    SharedModule
     // SocketIoModule.forRoot(config)
   ],
   providers: [

@@ -18,6 +18,10 @@ export class SidebarComponent implements OnInit{
     this.getEnrolledServers()
   }
 
+  openCreateServerModal(){
+    this.serverService.openModal()
+  }
+
   getEnrolledServers(){
     this.serverService.getAllEnrolled().subscribe({
       next: (data) => {
