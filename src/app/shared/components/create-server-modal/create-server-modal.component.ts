@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ServerService } from '../../services/server.service';
 
 @Component({
@@ -12,10 +13,23 @@ export class CreateServerModalComponent implements OnInit{
 
   isModalOpen: boolean = false;
 
-  constructor(private serverService: ServerService) {}
+  createServerForm: FormGroup
+
+  constructor(
+    private serverService: ServerService,
+    private formBuilder: FormBuilder
+    ) {}
 
   ngOnInit(): void {
     this.isModalOpened()
+    this.createForm()
+  }
+
+  createForm(){
+    this.createServerForm = this.formBuilder.group({
+      name: ["", [Validators.required, Validators.maxLength(50)]],
+      description: ["", [Validators.maxLength(500)]]
+    })
   }
 
   isModalOpened(){
@@ -28,6 +42,17 @@ export class CreateServerModalComponent implements OnInit{
 
   closeModal(){
     this.serverService.closeModal()
+  }
+
+  addServer(){
+    this.serverService.add({
+      ...this.createServerForm.value,
+      imagePath: "https://res.cloudinary.com/emreaka/image/upload/v1670148447/discord-clone/2048px-.NET_Logo.svg_xcajfn.png"
+    }).subscribe({
+      next: (value) => {
+        this.serverService.closeModal()
+      }
+    })
   }
 
   onChange(event: any) {

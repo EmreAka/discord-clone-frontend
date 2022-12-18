@@ -1,20 +1,30 @@
-<div *ngIf="isModalOpen" class="bg-transparent absolute top-0 left-0 w-screen h-screen flex justify-center items-center">
+<div *ngIf="isModalOpen"
+    class="bg-transparent absolute top-0 left-0 w-screen h-screen flex justify-center items-center">
     <div class="bg-gray-800 text-gray-300 sm:w-1/2  md:w-1/3 lg:1/4 xl:1/5  rounded-md">
         <div class="flex justify-between p-2">
             <h1 class="font-bold">Customize your server</h1>
             <i class="bi bi-x hover:cursor-pointer" (click)="closeModal()"></i>
         </div>
         <div class="bg-gray-700 p-3">
-            <p class="text-sm mb-2">
-                Give your new server a personality with a name and an icon  
+            <p class=" mb-2">
+                Give your new server a personality with a name and an icon
                 You can always change it later.
             </p>
-            <input placeholder="Your server name" class="w-full bg-gray-800 outline-none border-gray-500 p-1 rounded-md border"/>
-            <input type="file" class="mt-3" (change)="onChange($event)"/>
-            <img *ngIf="imageSrc" [src]="imageSrc[0]" class="w-20 rounded-md mt-3 ml-auto mr-auto"/>
+            <form [formGroup]="createServerForm">
+                <label>Server name</label>
+                <input placeholder="Your server name"
+                    class="w-full bg-gray-800 outline-none border-gray-500 p-1 rounded-md border mb-3" 
+                    formControlName="name"/>
+                <label>Server description</label>
+                <textarea placeholder="Your server description"
+                    class="w-full bg-gray-800 outline-none border-gray-500 p-1 rounded-md border"
+                    formControlName="description"></textarea>
+                <input type="file" class="mt-3" (change)="onChange($event)" />
+            </form>
+            <img *ngIf="imageSrc" [src]="imageSrc[0]" class="w-20 rounded-md mt-3 ml-auto mr-auto" />
         </div>
         <div class="bg-gray-700 flex items-center justify-end p-3">
-            <button class="bg-green-500 px-3 py-2 rounded-md hover:bg-green-400">Create</button>
+            <button (click)="addServer()" class="bg-green-500 px-3 py-2 rounded-md hover:bg-green-400 text-white">Create</button>
         </div>
     </div>
 </div>

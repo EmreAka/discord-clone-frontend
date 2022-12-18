@@ -26,6 +26,10 @@ export class ServerService {
     this.modalOpened.next(false)
   }
 
+  add(server: CreateServerDto){
+    return this.httpClient.post<any>(this.baseUrl + "server",server)
+  }
+
   getById(id: number){
     return this.httpClient.get<any>(this.baseUrl + "server"+"?"+"id="+id)
   }
@@ -53,4 +57,11 @@ export interface ServerDto{
   id: number;
   name: string;
   founderUsername: string;
+}
+
+//TODO: Image will be sent instead of imagePath
+export interface CreateServerDto{
+  name: string
+  description: string
+  imagePath: string
 }
