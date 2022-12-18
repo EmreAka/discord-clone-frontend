@@ -2,7 +2,7 @@
     <app-sidebar></app-sidebar>
     <div class="w-56 h-screen bg-gray-700 flex justify-between flex-col">
         <div>
-            <app-server-header></app-server-header>
+            <app-server-header [serverTitle]="server.name"></app-server-header>
             <app-channels></app-channels>
         </div>
         <app-user-info-bar></app-user-info-bar>

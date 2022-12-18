@@ -10,12 +10,16 @@ export class ServerService {
   baseUrl = environment.apiUrl;
   constructor(private httpClient: HttpClient) { }
 
+  getById(id: number){
+    return this.httpClient.get<any>(this.baseUrl + "server"+"?"+"id="+id)
+  }
+
   getAllEnrolled(): Observable<any>{
-    return this.httpClient.get<any>(`${this.baseUrl}server/enrolled`)
+    return this.httpClient.get<ServerDto>(`${this.baseUrl}server/enrolled`)
   }
 
   getAll(query:Query): Observable<any>{
-    return this.httpClient.get<any>(`${this.baseUrl}server?page=${query.page}&pageSize=${query.pageSize}&keyword=${query.keyword}`)
+    return this.httpClient.get<any>(`${this.baseUrl}server/paginate?page=${query.page}&pageSize=${query.pageSize}&keyword=${query.keyword}`)
   }
 
   enroll(serverId: number): Observable<any>{
@@ -27,4 +31,10 @@ export interface Query{
   page: number
   pageSize: number
   keyword: string
+}
+
+export interface ServerDto{
+  id: number;
+  name: string;
+  founderUsername: string;
 }
