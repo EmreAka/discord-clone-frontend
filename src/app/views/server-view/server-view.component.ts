@@ -1,7 +1,6 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ServerDto, ServerService } from 'src/app/shared/services/server.service';
-
 @Component({
   selector: 'app-server-view',
   templateUrl: './server-view.component.html',
@@ -18,7 +17,7 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
   rightClickMenuStyle: any = {
     'display': 'none'
   }
-
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private serverService: ServerService
@@ -50,8 +49,21 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
     })
   }
 
-  detectRightClick($event: MouseEvent){
-    console.log($event)
+  detectRightClick($event: MouseEvent, click: 'empty' | 'channel' | 'category'){
+    if (click === 'empty') {
+      console.log("boş")
+    }
+
+    else if (click === 'channel') {
+      console.log("channel")
+    }
+
+    if ($event.button == 0) {
+      this.rightClickMenuStyle = {
+        'display': 'none'
+      }
+    }
+
     if ($event.which == 3) {
       this.rightClickMenuStyle = {
         'display': 'block',
@@ -63,5 +75,3 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
   }
 
 }
-
-
