@@ -3,7 +3,7 @@
     <div class="w-56 h-screen bg-gray-700 flex justify-between flex-col" (mouseup)="detectRightClick($event, 'empty')">
         <div>
             <app-server-header [serverTitle]="server.name"></app-server-header>
-            <div class="relative z-10" (mouseup)="detectRightClick($event, 'channel')">
+            <div class="relative">
                 <app-channels></app-channels>
                 <app-right-click-menu [style]="rightClickMenuStyle"></app-right-click-menu>
             </div>
