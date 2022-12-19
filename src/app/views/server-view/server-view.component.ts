@@ -15,6 +15,10 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
+  rightClickMenuStyle: any = {
+    'display': 'none'
+  }
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private serverService: ServerService
@@ -46,4 +50,18 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
     })
   }
 
+  detectRightClick($event: MouseEvent){
+    console.log($event)
+    if ($event.which == 3) {
+      this.rightClickMenuStyle = {
+        'display': 'block',
+        'position': 'absolute',
+        'left.px': $event.clientX - 80,
+        'top.px': $event.clientY - 70
+      };
+    }
+  }
+
 }
+
+

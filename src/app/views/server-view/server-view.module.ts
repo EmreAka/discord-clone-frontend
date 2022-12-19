@@ -10,6 +10,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { ChatComponent } from './components/chat/chat.component';
 import { Socket, SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { RightClickMenuComponent } from './components/right-click-menu/right-click-menu.component';
 
 const routes: Routes = [
   {path:":serverId", component: ServerViewComponent}
@@ -36,6 +37,7 @@ var config: SocketIoConfig = {
     ChatHeaderComponent,
     ChannelsComponent,
     ChatComponent,
+    RightClickMenuComponent,
   ],
   imports: [
     CommonModule,

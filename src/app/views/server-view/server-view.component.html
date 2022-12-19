@@ -1,9 +1,12 @@
 <div class="flex h-screen">
     <app-sidebar></app-sidebar>
-    <div class="w-56 h-screen bg-gray-700 flex justify-between flex-col">
+    <div class="w-56 h-screen bg-gray-700 flex justify-between flex-col" (mouseup)="detectRightClick($event)">
         <div>
             <app-server-header [serverTitle]="server.name"></app-server-header>
-            <app-channels></app-channels>
+            <div class="relative grow">
+                <app-channels></app-channels>
+                <app-right-click-menu [style]="rightClickMenuStyle"></app-right-click-menu>
+            </div>
         </div>
         <app-user-info-bar></app-user-info-bar>
     </div>
