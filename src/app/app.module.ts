@@ -14,6 +14,7 @@ import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './shared/states/counter/counter.reducer';
+import { createChannelModalReducer } from './shared/states/create-channel-modal/create-channel-modal.reducers';
 
 let token: string = <string>localStorage.getItem('token')
 console.log(token)
@@ -44,7 +45,9 @@ const config: SocketIoConfig = {
     ServerViewModule,
     SharedModule,
     StoreModule.forRoot(
-      { count: counterReducer }
+      { count: counterReducer,
+        createChannelModal: createChannelModalReducer
+      }
     )
     // SocketIoModule.forRoot(config)
   ],
