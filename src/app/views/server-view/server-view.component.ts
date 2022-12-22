@@ -66,18 +66,15 @@ export class ServerViewComponent implements OnInit, AfterViewChecked {
     this.serverService.getById(+this.serverId).subscribe({
       next: (value) => {
         this.server = value;
-        console.log(value)
       }
     })
   }
 
   detectRightClick($event: MouseEvent, click: 'empty' | 'channel' | 'category') {
     if (click === 'empty') {
-      console.log("boş")
     }
 
     else if (click === 'channel') {
-      console.log("channel")
     }
 
     if ($event.button == 0) {

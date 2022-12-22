@@ -33,7 +33,6 @@ export class SidebarComponent implements OnInit{
   getCategoriesByServerId(serverId: number){
     this.categoryService.getAllByServerId(serverId).subscribe({
       next: (data) => {
-        console.log(data);
       }
     })
   }

@@ -59,8 +59,6 @@ export class ServerViewModule {
       next: (value) => {
         if (config.options?.query != undefined && (value != null)) {
           config.options.query['bearerToken'] = value;
-          console.log("yeni token:", value)
-          console.log(config.options.query['bearerToken'])
           this.socket.connect()
         }
       }

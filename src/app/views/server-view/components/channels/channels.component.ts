@@ -67,7 +67,7 @@ export class ChannelsComponent implements OnInit{
     alert("AHAHAH")
   }
 
-  openCreateChannelModal(){
-    this.store.dispatch(open())
+  openCreateChannelModal(category: any){
+    this.store.dispatch(open({category: {...category}}))
   }
 }

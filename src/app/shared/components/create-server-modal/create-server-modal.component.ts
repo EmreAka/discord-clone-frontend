@@ -66,7 +66,6 @@ export class CreateServerModalComponent implements OnInit{
         reader.readAsDataURL(file);
         reader.onload = () => {
           this.imageSrc.push(reader.result as string);
-          console.log(this.imageSrc)
         }
       }
     }

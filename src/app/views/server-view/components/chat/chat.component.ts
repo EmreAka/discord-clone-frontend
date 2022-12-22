@@ -52,7 +52,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.chatService.isMessageRecieved().subscribe({
       next: (value) => {
         if (value != null) {
-          console.log(value)
           this.getMessagesByChannelId(this.channel!.id)
         }
       }

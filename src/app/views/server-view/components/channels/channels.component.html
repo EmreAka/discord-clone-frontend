@@ -5,7 +5,7 @@
                 <i class="bi bi-dot text-2xl"></i>
                 <h4 class="text-sm font-bold">{{category.name}}</h4>
             </div>
-            <i class="bi bi-plus mr-3" (click)="openCreateChannelModal()"></i>
+            <i class="bi bi-plus mr-3" (click)="openCreateChannelModal(category)"></i>
         </div>
         <div *ngFor="let channel of category.channels" (click)="setChannel(channel)" [ngClass]="getClass(channel.id)"  class="flex items-center pl-3 hover:text-gray-100 hover:bg-gray-600 hover:cursor-pointer">
             <h1 class="py-1">

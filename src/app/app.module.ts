@@ -17,7 +17,6 @@ import { counterReducer } from './shared/states/counter/counter.reducer';
 import { createChannelModalReducer } from './shared/states/create-channel-modal/create-channel-modal.reducers';
 
 let token: string = <string>localStorage.getItem('token')
-console.log(token)
 const config: SocketIoConfig = {
   url: 'http://localhost:3000',
   options: {
