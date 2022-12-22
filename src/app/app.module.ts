@@ -12,6 +12,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { SharedModule } from './shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './shared/states/counter/counter.reducer';
 
 let token: string = <string>localStorage.getItem('token')
 console.log(token)
@@ -40,7 +42,10 @@ const config: SocketIoConfig = {
     BrowserAnimationsModule,
     AppRoutingModule,
     ServerViewModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forRoot(
+      { count: counterReducer }
+    )
     // SocketIoModule.forRoot(config)
   ],
   providers: [

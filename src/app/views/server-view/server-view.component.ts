@@ -1,27 +1,36 @@
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { ServerDto, ServerService } from 'src/app/shared/services/server.service';
+import { decrement, increment, reset } from 'src/app/shared/states/counter/counter.actions';
 @Component({
   selector: 'app-server-view',
   templateUrl: './server-view.component.html',
   styleUrls: ['./server-view.component.scss']
 })
-export class ServerViewComponent implements OnInit, AfterViewChecked{
+export class ServerViewComponent implements OnInit, AfterViewChecked {
   channelId: string = ""
   serverId: string = ""
 
-  server: ServerDto = {id: 0, founderUsername: "", name: ""}
+  server: ServerDto = { id: 0, founderUsername: "", name: "" }
 
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   rightClickMenuStyle: any = {
     'display': 'none'
   }
-  
+
+
+  count$: Observable<number>
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private serverService: ServerService
-    ) {  }
+    private serverService: ServerService,
+    private store: Store<{ count: number }>
+  ) {
+    this.count$ = store.select('count');
+  }
 
   ngAfterViewChecked(): void {
     if (this.myScrollContainer) {
@@ -40,7 +49,20 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
     });
   }
 
-  getServer(){
+  increment() {
+    this.store.dispatch(increment());
+  }
+ 
+  decrement() {
+    this.store.dispatch(decrement());
+    
+  }
+ 
+  reset() {
+    this.store.dispatch(reset());
+  }
+
+  getServer() {
     this.serverService.getById(+this.serverId).subscribe({
       next: (value) => {
         this.server = value;
@@ -49,7 +71,7 @@ export class ServerViewComponent implements OnInit, AfterViewChecked{
     })
   }
 
-  detectRightClick($event: MouseEvent, click: 'empty' | 'channel' | 'category'){
+  detectRightClick($event: MouseEvent, click: 'empty' | 'channel' | 'category') {
     if (click === 'empty') {
       console.log("boş")
     }
