@@ -30,6 +30,10 @@ export class ServerService {
     return this.httpClient.post<any>(this.baseUrl + "server",server)
   }
 
+  // addServer(serverDto: CreateServerDto){
+  //   return this.httpClient.post<CreateServerDto>("http://localhost:3000/server", serverDto);
+  // }
+
   getById(id: number){
     return this.httpClient.get<any>(this.baseUrl + "server"+"?"+"id="+id)
   }

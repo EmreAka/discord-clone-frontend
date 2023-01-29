@@ -28,7 +28,8 @@ export class CreateServerModalComponent implements OnInit{
   createForm(){
     this.createServerForm = this.formBuilder.group({
       name: ["", [Validators.required, Validators.maxLength(50)]],
-      description: ["", [Validators.maxLength(500)]]
+      description: ["", [Validators.maxLength(500)]],
+      imagePath: ["https://res.cloudinary.com/emreaka/image/upload/v1670159894/discord-clone/Typescript_logo_2020.svg_atei7k.png"]
     })
   }
 
